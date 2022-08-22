@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:ital@1&display=swap');
+:root{
+  --backgroundDarkColor: hsl(207, 26%, 17%);
+  --backgroundLightColor: hsl(0, 0%, 98%);
+  --elementDarkColor:hsl(209, 23%, 22%);
+  --lightModeText: hsl(200, 15%, 8%);
+  --lightModeInput: hsl(0, 0%, 52%);
+  --white:hsl(0, 0%, 100%);
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Nunito', sans-serif;
+}
+.container{
+  height: 100vh;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  
+}
+.header h2{
+  padding-left: 60px;
+  padding-top: 20px;
+}
+.mode{
+  margin-right: 100px;
+  
+}
+.light-icon{
+  transform: translate(-30px,25px);
+
+}
+.dark-icon{
+  transform: translate(45px,-20px);
+}
+.pipe{
+  width: 40px;
+  height: 15px;
+  background-color: var(--white);
+  border-radius: 15px;
+}
+.pipe .circle{
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+ 
+}
+.pipe .light-theme{
+  transform: translate(0,-2px);
+}
+.pipe .dark-theme{
+  transform: translate(20px,-2px);
+}
+.dark-themeForHeader{
+  background-color: var(--elementDarkColor);
+}
+.light-themeForHeader{
+  background-color: var(--backgroundLightColor);
+  color: var(--lightModeText);
+}
+.dark-theme{
+  background-color: var(--backgroundDarkColor);
+  color: var(--white);
+}
+.light-theme{
+  background-color: var(--backgroundLightColor);
+  color: var(--lightModeText);
+}
+
+
+
