@@ -1,19 +1,29 @@
 import React from "react";
 import darkModeIcon from '../img/night-mode.png'
 import lightModeIcon from '../img/light-mode.png'
+import { connect } from "react-redux";
+import { toggle } from "../actions"; 
 
-export default function Header(){
+ function Header(props){
+    console.log(props)
+    const mode = props.isToggle ? 'dark' : 'light'
     
     return(
-        <header className="header dark-themeForHeader">
-            <h2 className="dark-themeForHeader">Where in the world?</h2>
+        <header className={`header ${mode}-themeForHeader`}>
+            <h2 className={`${mode}-themeForHeader`}>Where in the world?</h2>
             <div className="mode">
-                <img alt="" className="light-icon dark-theme" src={lightModeIcon} />
-                <div className="pipe light-theme" >
-                    <div  className="circle dark-theme"></div>
+                <img alt="" className={`light-icon ${mode}-theme`} src={lightModeIcon} />
+                <div onClick={() => props.toggle()} className={`pipe ${mode}-themeForPipe`} >
+                    <div  className={`circle ${mode}-theme`}></div>
                 </div>
-                <img alt="" className="dark-icon dark-theme" src={darkModeIcon} />
+                <img alt="" className={`dark-icon ${mode}-theme`} src={darkModeIcon} />
             </div>
       </header>
     )
 }
+const mapStateToProps = state => {
+    return  {
+        isToggle: state.isToggle
+    }
+}
+export default connect(mapStateToProps, {toggle})(Header)
