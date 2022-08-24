@@ -6,10 +6,9 @@ import upArrowLight from '../img/upArrowLight.png'
 import upArrowDark from '../img/upArrowDark.png'
 import downArrowLight from '../img/downArrowLight.png'
 import downArrowDark from '../img/downArrowDark.png'
-import { toggle } from "../actions";
+import { toggle,getCountries,filterCountries  } from "../actions";
 import { connect } from "react-redux";
-import { getCountries } from "../actions";
-import { filterCountries } from "../actions";
+
 
 
 function Main(props){
@@ -17,6 +16,8 @@ function Main(props){
    const [arrowIcon, setArrowIcon] = useState()
    const [isHovered,setIshovered] = useState(false)
    const [region, setRegion] = useState('')
+   const [searchedCountry, setSearchedCountry] = useState('')
+   const [shouldFiltre, setShouldFiltre] = useState(false)
    const mode = props.isToggle ? 'dark' : 'light'
    const searchIcon = props.isToggle ? darkSearchIcon: lightSearchIcon
     
@@ -25,23 +26,39 @@ function Main(props){
         props.getCountries() // fetch data
        
     },[])
-
+   
     useEffect(() => {
        const icon = isHovered ? mode ==='dark' ? downArrowDark : downArrowLight : mode==='light' ? upArrowLight : upArrowDark
        setArrowIcon(icon)
     },[isHovered,mode])
  
-    useEffect(() => {
-        props.filterCountries(filteredRegion)
-    },[region])
     
-    const filteredRegion = props.countries.filter((country) => country.region.toLowerCase().includes(region.toLocaleLowerCase()))
+    function filteredCountries(){
+        if(shouldFiltre){
+            return props.countries.filter((country) => country.name.toLowerCase().includes(searchedCountry.toLowerCase())) 
+        }else{
+            return props.countries.filter((country) => country.region.toLowerCase().includes(region.toLocaleLowerCase())) 
+        }     
+    }
+   
+
+    useEffect(() => {
+       
+        props.filterCountries(filteredCountries())
+        console.log(filteredCountries())
+    },[shouldFiltre])
+
+    function handleSearch (event){
+        setShouldFiltre(true)
+        setSearchedCountry(event.target.value)
+       
+    }
     function handleSelect (event) { 
+        setShouldFiltre(false)
         setRegion(event.target.value)
-        
     }
   
-    const Carts = filteredRegion.map((item,i) => {
+    const Carts = filteredCountries().map((item,i) => {
         return (
           <Cart 
                 key={i}
@@ -60,7 +77,7 @@ function Main(props){
             <div className="search-dropdown">
                 <div className="search">
                     <img alt="" className="search-icon" src={searchIcon} />
-                    <input type='text' className={`input-search ${mode}-themeForHeader`} placeholder="Search for a country" />
+                    <input type='text' className={`input-search ${mode}-themeForHeader`} placeholder="Search for a country" onChange={handleSearch} value={searchedCountry} />
                 </div>
                 <div className={`dropdown ${mode}-themeForHeader`} onMouseEnter={() => setIshovered(true)} onMouseLeave={() => setIshovered(false)}>
                     <p className={`dropBtn ${mode}-themeForHeader`}>Filter by Region <img className="arrowIcon" alt="" src={arrowIcon} /></p>
