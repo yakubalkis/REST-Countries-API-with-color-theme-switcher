@@ -1,6 +1,8 @@
 import React from "react";
-import Header from "./components/pages/Header";
+import Header from "./Header";
 import Main from "./components/pages/Main";
+import CartDetail from "./components/pages/CartDetail";
+import { Routes,Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { toggle } from "./components/actions";
 
@@ -10,7 +12,10 @@ function App(props){
   return(
     <div className={`container ${mode}-theme`}>
       <Header/>
-      <Main/>
+      <Routes>
+         <Route path='/*' element = {<Main />} /> 
+         <Route path="/cartDetail" element={<CartDetail />} />
+      </Routes>
     </div>
   )
 }
