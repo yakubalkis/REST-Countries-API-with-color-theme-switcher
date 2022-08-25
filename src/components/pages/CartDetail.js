@@ -1,4 +1,5 @@
 import React from "react";
+import BorderCountry from "./BorderCountries";
 import { connect } from "react-redux";
 import { toggle, filterCountries } from "../actions";
 import { Link } from "react-router-dom";
@@ -7,11 +8,17 @@ import leftArrowDark from '../img/leftArrowDark.png'
 
 function CartDetail(props){
     const filtered = props.filteredCountries.filter(country => country.name === props.nameOf)[0]
-    console.log(props.filteredCountries.filter(country => country.name === props.nameOf)[0])
+    const borderCountries = filtered.borders?.map(alphaCode => props.countries.filter(country => country.alpha3Code===alphaCode))
     const mode = props.isToggle ? 'dark' : 'light'
     const icon = props.isToggle ? leftArrowDark : leftArrowLight 
     const style = { boxShadow: props.isToggle ? '0 0 7px black' : '0 0 7px gray'}
     
+   
+    const borders = borderCountries?.map((country,i) => {
+        return (
+            <BorderCountry key={i} name={country[0].name} />
+        )
+    })
     return (
         <div className={`cartDetail ${mode}-theme`}>
 
@@ -40,7 +47,7 @@ function CartDetail(props){
                         </div>
                     </div>
                     <div className="info-end">
-                            <p>Border Countries:</p>
+                            <h5>Border Countries:{borders} </h5>
                     </div>
                 </div>
             </div>
