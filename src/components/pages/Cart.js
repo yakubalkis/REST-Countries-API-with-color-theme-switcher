@@ -1,9 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggle } from "../actions";
-import { getId } from "../actions";
-
-import {Link, Routes, Route} from 'react-router-dom'
+import { getId,getName  } from "../actions";
+import {Link} from 'react-router-dom'
 
 function Cart(props){
  
@@ -20,7 +18,7 @@ function Cart(props){
                 <p>Capital: <span className="span">{props.capital}</span></p>
             </div>
         </div>
-        <Link to='/cartDetail'  ><button className={`detailBtn ${mode}-themeForPipe`} onClick={() => {props.getId(props.idOf)}} >More...</button></Link>
+        <Link to='/cartDetail'  ><button className={`detailBtn ${mode}-themeForPipe`} onClick={() => {props.getId(props.idOf) ; props.getName(props.name)}} >More...</button></Link>
        
     </div>
     )
@@ -32,4 +30,4 @@ const mapStateToProps = state =>  {
     }
 }
 
-export default connect(mapStateToProps, {toggle, getId})(Cart)
+export default connect(mapStateToProps, { getId, getName})(Cart)
