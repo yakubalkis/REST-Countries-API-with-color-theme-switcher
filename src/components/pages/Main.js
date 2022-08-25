@@ -6,6 +6,7 @@ import upArrowLight from '../img/upArrowLight.png'
 import upArrowDark from '../img/upArrowDark.png'
 import downArrowLight from '../img/downArrowLight.png'
 import downArrowDark from '../img/downArrowDark.png'
+import loadingGif from '../img/loading.gif'
 import { getCountries,filterCountries  } from "../actions";
 import { connect } from "react-redux";
 
@@ -31,7 +32,7 @@ function Main(props){
     })
    
     useEffect(() => {
-       const icon = isHovered ? mode ==='dark' ? downArrowDark : downArrowLight : mode==='light' ? upArrowLight : upArrowDark
+       const icon = isHovered ? mode ==='dark' ? upArrowDark  : upArrowLight  : mode==='light' ?  downArrowLight : downArrowDark
        setArrowIcon(icon)
     },[isHovered,mode])
  
@@ -59,7 +60,7 @@ function Main(props){
         setRegion(event.target.value)
     }
   
-    const Carts = filteredCountries().map((item,i) => {
+    const Carts =props.isLoading ? <img className="loadingGif" alt="" src={loadingGif}/> : filteredCountries().map((item,i) => {
         if(item.name==='Antarctica'){return false} // antarctica isn't country
         return (
           <Cart 
@@ -72,7 +73,7 @@ function Main(props){
                 name = {item.name}
           />
             )
-    })
+    }) 
    
     return(
         <main className={`main ${mode}-theme`}>
@@ -102,7 +103,8 @@ function Main(props){
 const mapStateToProps = state => {
     return {
         countries: state.countries,
-        isToggle: state.isToggle
+        isToggle: state.isToggle,
+        isLoading:state.isLoading
     }
 }
 export default connect(mapStateToProps,{getCountries, filterCountries})(Main)
