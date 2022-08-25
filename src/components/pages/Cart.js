@@ -8,18 +8,19 @@ function Cart(props){
     const mode = props.isToggle ? 'dark' : 'light'
   
     return(
-    <div className={`cart ${mode}-themeForHeader`}>
-        <img  alt="" src={props.src} className="flag" />
-        <div className="cart-info">
-            <h4>{props.name}</h4>
-            <div className="cart-info-p">
-                <p>Population: <span className="span">{props.population}</span></p>
-                <p>Region: <span className="span">{props.region}</span></p>
-                <p>Capital: <span className="span">{props.capital}</span></p>
+    <div className={`parent-cart ${mode}-themeForHeader`}>
+        <div className={`cart ${mode}-themeForHeader`}>
+            <img  alt="" src={props.src} className="flag" />
+            <div className="cart-info">
+                <h4>{props.name}</h4>
+                <div className="cart-info-p">
+                    <p>Population: <span className="span">{props.population}</span></p>
+                    <p>Region: <span className="span">{props.region}</span></p>
+                    <p>Capital: <span className="span">{props.capital}</span></p>
+                </div>
             </div>
         </div>
         <Link to='/cartDetail'  ><button className={`detailBtn ${mode}-themeForPipe`} onClick={() => {props.getId(props.idOf) ; props.getName(props.name)}} >More...</button></Link>
-       
     </div>
     )
 }

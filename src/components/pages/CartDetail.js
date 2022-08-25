@@ -47,7 +47,8 @@ function CartDetail(props){
                         </div>
                     </div>
                     <div className="info-end">
-                            <h5>Border Countries:{borders} </h5>
+                            <h5 className="info-end-header">Border Countries: </h5>
+                            <div className="borders">{borders}</div>
                     </div>
                 </div>
             </div>
