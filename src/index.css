@@ -23,6 +23,9 @@ body{
   display: flex;
   justify-content: space-between;
   height: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 .header h2{
   padding-left: 60px;
@@ -164,7 +167,6 @@ body{
 .cart{
   width: 200px;
   height: 250px;
-  position: relative;
 }
 .flag{
   width: 200px;
@@ -184,14 +186,14 @@ body{
   font-size: 13px;
   font-weight: 700;
 }
-span, .borderCountry{
+span{
   font-weight: lighter;
   opacity: 0.9;
 }
 .detailBtn{
   position: absolute;
   margin-left: 150px;
-  margin-top: 10px;
+  margin-top: -20px;
   border-radius: 2px;
   font-weight: 700;
   border: none;
@@ -204,6 +206,8 @@ span, .borderCountry{
 }
 .cartDetail{
   height: 33rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 .btnBackDiv{
   width: 100px;
@@ -228,7 +232,6 @@ span, .borderCountry{
 .detail{
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
   position: absolute;
   top: 200px;
   left: 60px;
@@ -236,7 +239,6 @@ span, .borderCountry{
 .detail-flag{
   width: 400px;
   height: 250px;
-  
 }
 .detail-info{
   transform: translate(120px,20px);
@@ -258,6 +260,23 @@ span, .borderCountry{
 }
 .info-end{
   margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.info-end-header{
+  position: relative;
+}
+.borders{
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 32rem;
+  margin-left:120px ;
+  margin-top: -5px;
+}
+.borders p{
+  font-weight: 200;
 }
 .borderCountry{
   margin-left: 10px;
@@ -267,4 +286,194 @@ span, .borderCountry{
   display: inline-block;
   min-width: 70px;
   text-align: center;
+  margin-top: 5px;
 }
+
+@media only screen and (max-width:1180px){
+  .detail-flag{
+    width: 350px;
+    height: 220px;
+  }
+  .detail-info{
+    transform: translate(50px,10px);
+  }
+  .info-mid{
+    width: 450px;
+  }
+ .borders{
+  width: 25rem;
+ }
+}
+@media  only screen and (max-width:990px){
+  .info-mid{
+    width: 400px;
+  }
+  .borders{
+    width: 21rem;
+  }
+}
+@media  only screen and (max-width:920px){
+  .info-mid{
+    width: 300px;
+  }
+  .borders{
+    width: 18rem;
+  }
+}
+@media  only screen and (max-width:870px){
+  .detail-info{
+   margin-top: -10px;
+  }
+  .info-end{
+    margin-top: 10px;
+  }
+  .detail-flag{
+    width: 300px;
+    height: 180px;
+  }
+  .info-mid{
+    margin-top: -5px;
+    width: 270px;
+  }
+  .borders{
+    width: 16rem;
+  }
+}
+@media  only screen and (max-width:790px){
+  .cartDetail{
+    height: 160vh;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .detail{
+    flex-direction: column;
+  }
+  .detail-info{
+    transform: translate(5px,10px);
+  }
+  .detail-flag{
+    width: 30rem;
+    height: 20rem;
+  }
+  .info-mid{
+    flex-direction: column;
+    gap: 10px;
+  }
+  .info-end{
+    width: 10rem;
+    transform: translate(150px,-180px);
+  }
+}
+@media only screen and (max-width:590px){
+  .detail-flag{
+    width: 25rem;
+    height: 15rem;
+  }
+  .borders{
+    margin-top: 20px;
+    margin-left: -8px;
+    width: 16rem;
+  }
+  .header h2{
+    transform: translateX(-40px);
+  }
+  .mode{
+    transform: translateX(25px);
+  }
+}
+@media only screen and (max-width:470px){
+  .mode{
+    transform: translateX(45px);
+  }
+  .btnBackDiv{
+    transform: translateX(-30px);
+  }
+  .detail-flag{
+    width: 20rem;
+    height: 12rem;
+    transform: translate(-30px,-15px);
+  }
+  .detail-info{
+    transform: translate(-25px,15px);
+  }
+  .info-end{
+    width: 10rem;
+    transform: translate(0px,10px);
+  }
+  .header h2{
+    font-size: 18px;
+    transform: translateX(-45px);
+  }
+}
+@media only screen and (max-width:375px){
+  .header h2{
+    font-size: 16px;
+    transform: translateX(-45px);
+    margin-top: 2px;
+  }
+  .detail-flag{
+    width: 16rem;
+    height: 9rem;
+    transform: translate(-30px,-15px);
+  }
+  .info-header{
+    width: 10rem;
+  }
+}
+@media only screen and (max-width:375px){
+  .header h2{
+    font-size: 13px;
+    transform: translateX(-45px);
+    margin-top: 5px;
+    margin-right: -15px;
+  } 
+  .info-mid{ width: 10rem;}
+}
+@media only screen and (max-width:320px){
+  .header h2{
+    font-size: 11px;
+    margin-top: 5px;
+    margin-right: -15px;
+    word-spacing: -1px;
+  } 
+  .mode{
+    transform: translateX(50px);
+  }
+  .borders{
+    width: 14rem;
+  }
+  .detail{width: 10px;}
+}
+@media only screen and (max-width:290px){
+  .btnBackDiv{transform: translateX(-45px);}
+  .detail{
+    transform: translateX(-15px);
+  }
+  .header h2{
+    font-size: 10px;
+    margin-top: 7px;
+  }
+}
+@media only screen and (max-width:270px){
+  .detail-flag{
+    width: 14rem;
+  }
+}
+@media only screen and (max-width:240px){
+  .detail-flag{
+    width: 12rem;
+    height: 7rem;
+  }
+  .header h2{
+    margin-top: 0px;
+  }
+}
+
+
+
+
+
+
+
+
+
