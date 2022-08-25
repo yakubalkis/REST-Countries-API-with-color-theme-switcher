@@ -17,8 +17,7 @@ body{
   font-family: 'Nunito', sans-serif;
 }
 .container{
-  min-height: 100% !important;
- 
+  min-height: 100vh !important;
 }
 .header{
   display: flex;
@@ -89,7 +88,7 @@ body{
 }
 .main{
   width: 90%;
-  height: 85%;
+  height: 100%;
   margin-top: 40px;
   margin-left: 70px;
 }
@@ -129,6 +128,7 @@ body{
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 .dropBtn{
   width: 150px;
@@ -150,15 +150,16 @@ body{
   margin-top: 0.5px;
   border-radius: 5px;
 }
-.dropdown-content a {
+.dropdown-content option {
   color: black;
   padding-left: 15px;
   padding-top: 5px;
   text-decoration: none;
   border-radius: 5px;
   display: block;
+ 
 }
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content option:hover {background-color: #ddd;}
 .dropdown:hover .dropdown-content {display: block;}
 .cart{
   width: 200px;
@@ -183,7 +184,7 @@ body{
   font-size: 13px;
   font-weight: 700;
 }
-span{
+span, .borderCountry{
   font-weight: lighter;
   opacity: 0.9;
 }
@@ -195,6 +196,11 @@ span{
   font-weight: 700;
   border: none;
   cursor: pointer;
+}
+.loadingGif{
+  position: absolute;
+  right: 50%;
+  transform: translate(50%,50px);
 }
 .cartDetail{
   height: 33rem;
@@ -252,4 +258,13 @@ span{
 }
 .info-end{
   margin-top: 25px;
+}
+.borderCountry{
+  margin-left: 10px;
+  border-radius: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  display: inline-block;
+  min-width: 70px;
+  text-align: center;
 }
