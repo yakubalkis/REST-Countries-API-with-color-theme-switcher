@@ -24,8 +24,11 @@ function Main(props){
 
     useEffect(() => {
         props.getCountries() // fetch data
-       
+      
     },[])
+    useEffect(() => {
+        props.filterCountries(props.countries)
+    })
    
     useEffect(() => {
        const icon = isHovered ? mode ==='dark' ? downArrowDark : downArrowLight : mode==='light' ? upArrowLight : upArrowDark
@@ -34,11 +37,12 @@ function Main(props){
  
     
     function filteredCountries(){
-        if(shouldFiltre){
+        if(shouldFiltre===true){
             return props.countries.filter((country) => country.name.toLowerCase().includes(searchedCountry.toLowerCase())) 
-        }else{
+        }else if(shouldFiltre===false){
             return props.countries.filter((country) => country.region.toLowerCase().includes(region.toLocaleLowerCase())) 
-        }     
+        }
+        
     }
    
 
