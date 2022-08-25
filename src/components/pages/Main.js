@@ -6,7 +6,7 @@ import upArrowLight from '../img/upArrowLight.png'
 import upArrowDark from '../img/upArrowDark.png'
 import downArrowLight from '../img/downArrowLight.png'
 import downArrowDark from '../img/downArrowDark.png'
-import { toggle,getCountries,filterCountries  } from "../actions";
+import { getCountries,filterCountries  } from "../actions";
 import { connect } from "react-redux";
 
 
@@ -42,27 +42,25 @@ function Main(props){
         }else if(shouldFiltre===false){
             return props.countries.filter((country) => country.region.toLowerCase().includes(region.toLocaleLowerCase())) 
         }
-        
     }
    
 
     useEffect(() => {
-       
         props.filterCountries(filteredCountries())
-        console.log(filteredCountries())
     },[shouldFiltre])
 
     function handleSearch (event){
         setShouldFiltre(true)
         setSearchedCountry(event.target.value)
-       
     }
+
     function handleSelect (event) { 
         setShouldFiltre(false)
         setRegion(event.target.value)
     }
   
     const Carts = filteredCountries().map((item,i) => {
+        if(item.name==='Antarctica'){return false} // antarctica isn't country
         return (
           <Cart 
                 key={i}
@@ -107,4 +105,4 @@ const mapStateToProps = state => {
         isToggle: state.isToggle
     }
 }
-export default connect(mapStateToProps,{getCountries, toggle, filterCountries})(Main)
+export default connect(mapStateToProps,{getCountries, filterCountries})(Main)
