@@ -1,5 +1,6 @@
 import React from "react";
 import BorderCountry from "./BorderCountries";
+import addDot from "../addDotFunction/addDot";
 import { connect } from "react-redux";
 import { toggle, filterCountries } from "../actions";
 import { Link } from "react-router-dom";
@@ -35,7 +36,7 @@ function CartDetail(props){
                     <div className="info-mid">
                         <div className="info-mid-left" >
                             <p>Native Name: <span>{filtered.nativeName}</span></p>
-                            <p>Population: <span>{filtered.population}</span></p>
+                            <p>Population: <span>{addDot(filtered.population)}</span></p>
                             <p>Region: <span>{filtered.region}</span></p>
                             <p>Sub Region: <span>{filtered.subregion}</span></p>
                             <p>Capital: <span>{filtered.capital}</span></p>

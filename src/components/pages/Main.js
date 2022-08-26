@@ -1,5 +1,6 @@
 import React, { useEffect,  useState } from "react";
 import Cart from "./Cart";
+import addDot from "../addDotFunction/addDot";
 import darkSearchIcon from '../img/search-iconDark.png'
 import lightSearchIcon from '../img/search-iconLight.png'
 import upArrowLight from '../img/upArrowLight.png'
@@ -50,6 +51,8 @@ function Main(props){
         props.filterCountries(filteredCountries())
     },[shouldFiltre])
 
+    
+
     function handleSearch (event){
         setShouldFiltre(true)
         setSearchedCountry(event.target.value)
@@ -67,7 +70,7 @@ function Main(props){
                 key={i}
                 idOf={i} 
                 src={item.flag} 
-                population={item.population} 
+                population={addDot(item.population)} 
                 region={item.region} 
                 capital={item.capital} 
                 name = {item.name}
