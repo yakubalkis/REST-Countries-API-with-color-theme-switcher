@@ -288,6 +288,10 @@ span{
   text-align: center;
   margin-top: 5px;
 }
+@media only screen and (max-width:1330px){
+.carts{
+  gap: 45px;
+}}
 
 @media only screen and (max-width:1180px){
   .detail-flag{
@@ -300,29 +304,37 @@ span{
   .info-mid{
     width: 450px;
   }
- .borders{
+  .borders{
   width: 25rem;
- }
-}
-@media  only screen and (max-width:990px){
+  }}
+
+@media only screen and (max-width:1040px){
+  .carts{
+    gap: 65px;
+  }
+  .main{
+    margin-left: 42px;
+  }}
+
+@media only screen and (max-width:990px){
   .info-mid{
     width: 400px;
   }
   .borders{
     width: 21rem;
-  }
-}
-@media  only screen and (max-width:920px){
+  }}
+
+@media only screen and (max-width:920px){
   .info-mid{
     width: 300px;
   }
   .borders{
     width: 18rem;
-  }
-}
-@media  only screen and (max-width:870px){
+  }}
+
+@media only screen and (max-width:870px){
   .detail-info{
-   margin-top: -10px;
+    margin-top: -10px;
   }
   .info-end{
     margin-top: 10px;
@@ -337,9 +349,14 @@ span{
   }
   .borders{
     width: 16rem;
-  }
-}
-@media  only screen and (max-width:790px){
+  }}
+
+@media only screen and (max-width:815px){
+  .carts{
+    gap: 43px;
+  }}
+ 
+@media only screen and (max-width:790px){
   .cartDetail{
     height: 160vh;
     display: flex;
@@ -362,8 +379,8 @@ span{
   .info-end{
     width: 10rem;
     transform: translate(150px,-180px);
-  }
-}
+  }}
+
 @media only screen and (max-width:590px){
   .detail-flag{
     width: 25rem;
@@ -380,8 +397,11 @@ span{
   .mode{
     transform: translateX(25px);
   }
-}
-@media only screen and (max-width:470px){
+  .input-search{
+    width: 230px;
+  }}
+
+@media only screen and (max-width:490px){
   .mode{
     transform: translateX(45px);
   }
@@ -404,22 +424,24 @@ span{
     font-size: 18px;
     transform: translateX(-45px);
   }
-}
-@media only screen and (max-width:375px){
-  .header h2{
-    font-size: 16px;
-    transform: translateX(-45px);
-    margin-top: 2px;
+  .search-dropdown{
+    flex-direction: column;
+    gap: 15px;
   }
-  .detail-flag{
-    width: 16rem;
-    height: 9rem;
-    transform: translate(-30px,-15px);
+  .dropdown{
+    width: 150px;
   }
-  .info-header{
-    width: 10rem;
+  .carts{
+    width: 250px;
   }
-}
+ .search-dropdown{
+  width: 280px;
+ }
+ .main{
+  margin-left: 20px;
+  width: 275px;
+ }}
+
 @media only screen and (max-width:375px){
   .header h2{
     font-size: 13px;
@@ -428,7 +450,18 @@ span{
     margin-right: -15px;
   } 
   .info-mid{ width: 10rem;}
-}
+  .detail-flag{
+    width: 16rem;
+    height: 9rem;
+    transform: translate(-30px,-15px);
+  }
+  .info-header{
+    width: 10rem;
+  }
+  .main{
+    margin-left: 30px;
+   }}
+   
 @media only screen and (max-width:320px){
   .header h2{
     font-size: 11px;
@@ -443,7 +476,16 @@ span{
     width: 14rem;
   }
   .detail{width: 10px;}
-}
+  .main{
+    width: 240px;
+  }
+  .input-search{
+    width: 200px;
+  }
+  .search-dropdown{
+    width: 200px;
+  }}
+
 @media only screen and (max-width:290px){
   .btnBackDiv{transform: translateX(-45px);}
   .detail{
@@ -453,12 +495,25 @@ span{
     font-size: 10px;
     margin-top: 7px;
   }
-}
+  .main{
+    margin-left: 15px;
+  }}
+
 @media only screen and (max-width:270px){
   .detail-flag{
     width: 14rem;
   }
-}
+  .main{
+    width: 180px;
+    margin-left: 10px;
+  }
+  .carts{
+    width: 200px;
+  }
+  .input-search{
+    width: 180px;
+  }}
+
 @media only screen and (max-width:240px){
   .detail-flag{
     width: 12rem;
@@ -467,7 +522,10 @@ span{
   .header h2{
     margin-top: 0px;
   }
-}
+  .main{
+    margin-left: 5px;
+  }}
+
 
 
 
