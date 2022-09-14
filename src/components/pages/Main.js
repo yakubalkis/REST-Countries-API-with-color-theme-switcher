@@ -1,4 +1,6 @@
 import React, { useEffect,  useState } from "react";
+import { connect } from "react-redux";
+import { getCountries,filterCountries  } from "../actions";
 import Cart from "./Cart";
 import addDot from "../addDotFunction/addDot";
 import darkSearchIcon from '../img/search-iconDark.png'
@@ -8,8 +10,6 @@ import upArrowDark from '../img/upArrowDark.png'
 import downArrowLight from '../img/downArrowLight.png'
 import downArrowDark from '../img/downArrowDark.png'
 import loadingGif from '../img/loading.gif'
-import { getCountries,filterCountries  } from "../actions";
-import { connect } from "react-redux";
 
 
 
@@ -23,10 +23,12 @@ function Main(props){
    const mode = props.isToggle ? 'dark' : 'light'
    const searchIcon = props.isToggle ? darkSearchIcon: lightSearchIcon
     
+  
 
     useEffect(() => {
-        props.getCountries() // fetch data
-      
+            if(!props.isCameBackHomePage){
+                props.getCountries() // fetch data
+            }
     },[])
     useEffect(() => {
         props.filterCountries(props.countries)
@@ -107,7 +109,8 @@ const mapStateToProps = state => {
     return {
         countries: state.countries,
         isToggle: state.isToggle,
-        isLoading:state.isLoading
+        isLoading:state.isLoading,
+        isCameBackHomePage:state.isCameBackHomePage
     }
 }
 export default connect(mapStateToProps,{getCountries, filterCountries})(Main)
