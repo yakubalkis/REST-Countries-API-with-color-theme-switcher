@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     countries:[],
     id:'',
     nameOf:'',
-    filteredCountries:[]
+    filteredCountries:[],
+    isCameBackHomePage:false
 }
 
 export const reducer = (state=INITIAL_STATE,action) => {
@@ -21,6 +22,8 @@ export const reducer = (state=INITIAL_STATE,action) => {
             return {...state, filteredCountries: action.payload}
         case 'GET_NAME':
             return {...state, nameOf: action.payload }
+        case 'SET_IS_CAME_BACK_HOME_PAGE':
+            return {...state, isCameBackHomePage:true}
         default:
             return state
     }

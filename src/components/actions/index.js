@@ -22,3 +22,6 @@ export const filterCountries = (arrayOfCountries) => dispatch => {
 export const getName = (name) => dispatch => {
    dispatch({type: 'GET_NAME', payload: name})
 }
+export const setIsCameBackHomePage = () => dispatch => {
+   dispatch({type: 'SET_IS_CAME_BACK_HOME_PAGE'})
+}
