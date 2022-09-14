@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { toggle, filterCountries,setIsCameBackHomePage } from "../actions";
 import BorderCountry from "./BorderCountries";
 import addDot from "../addDotFunction/addDot";
-import { connect } from "react-redux";
-import { toggle, filterCountries } from "../actions";
-import { Link } from "react-router-dom";
 import leftArrowLight from '../img/leftArrowLight.png'
 import leftArrowDark from '../img/leftArrowDark.png'
 
@@ -13,8 +14,15 @@ function CartDetail(props){
     const mode = props.isToggle ? 'dark' : 'light'
     const icon = props.isToggle ? leftArrowDark : leftArrowLight 
     const style = { boxShadow: props.isToggle ? '0 0 7px black' : '0 0 7px gray'}
-    
+    const {pathname} = useLocation()
    
+    useEffect(() => {
+        if(pathname==='/cartDetail'){
+            props.setIsCameBackHomePage()
+        }
+    },[])
+
+
     const borders = borderCountries?.map((country,i) => {
         return (
             <BorderCountry key={i} name={country[0].name} />
@@ -24,7 +32,7 @@ function CartDetail(props){
         <div className={`cartDetail ${mode}-theme`}>
 
            <Link to='/' style={{textDecoration:"none"}} > 
-                <div style={style} className={`btnBackDiv ${mode}-themeForHeader`}  >
+                <div style={style} className={`btnBackDiv ${mode}-themeForHeader`} >
                     <img className="btnIcon" alt="" src={icon} />
                     <button className={`backBtn ${mode}-themeForHeader `}>Back</button>
                 </div>
@@ -66,4 +74,4 @@ const mapStateToProps = state => {
         nameOf: state.nameOf
     }
 }
-export default connect(mapStateToProps, {toggle, filterCountries})(CartDetail)
+export default connect(mapStateToProps, {toggle, filterCountries,setIsCameBackHomePage})(CartDetail)
